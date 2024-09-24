@@ -11,3 +11,6 @@ CPMAddPackage("gh:doctest/doctest@2.4.11")
 CPMAddPackage("gh:TheLartians/Format.cmake@1.8.1")
 
 include(${doctest_SOURCE_DIR}/scripts/cmake/doctest.cmake)
+
+add_executable(counters counters.cpp)
+set_target_properties(counters PROPERTIES CXX_STANDARD 20)
