@@ -17,3 +17,6 @@ set_target_properties(counters PROPERTIES CXX_STANDARD 20)
 
 add_executable(locking_queue locking_queue.cpp)
 set_target_properties(locking_queue PROPERTIES CXX_STANDARD 20)
+
+add_executable(minimal_allocator minimal_allocator.cpp)
+set_target_properties(minimal_allocator PROPERTIES CXX_STANDARD 20)
