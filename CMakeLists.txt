@@ -23,3 +23,6 @@ set_target_properties(minimal_allocator PROPERTIES CXX_STANDARD 20)
 
 add_executable(scl_timer scl_timer.cpp)
 set_target_properties(scl_timer PROPERTIES CXX_STANDARD 20)
+
+add_executable(atomic_shared_ptr atomic_shared_ptr.cpp)
+set_target_properties(atomic_shared_ptr PROPERTIES CXX_STANDARD 20)
