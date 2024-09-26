@@ -60,7 +60,7 @@ void time_consuming_operation()
     for (int i = 0; i < 100; ++i) {
         // Simulate a heavy computation by calculating the sum of a large vector
         std::vector<int> large(1000000, 1); // Vector with 1,000,000 elements, all set to 1
-        int64_t sum = std::accumulate(large.begin(), large.end(), 0LL);
+        [[maybe_unused]] int64_t sum = std::accumulate(large.begin(), large.end(), 0LL);
     }
 
     std::cout << std::format("{} Time-consuming computation completed.\n", std::chrono::system_clock::now());

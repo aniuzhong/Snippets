@@ -22,6 +22,11 @@ set_target_properties(minimal_allocator PROPERTIES CXX_STANDARD 20)
 
 add_executable(scl_timer scl_timer.cpp)
 set_target_properties(scl_timer PROPERTIES CXX_STANDARD 20)
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+  target_compile_options(scl_timer PUBLIC -Wall -Wpedantic -Wextra -Werror)
+elseif(MSVC)
+  target_compile_options(scl_timer PUBLIC /W4 /WX)
+endif()
 
 add_executable(atomic_shared_ptr atomic_shared_ptr.cpp)
 set_target_properties(atomic_shared_ptr PROPERTIES CXX_STANDARD 20)
