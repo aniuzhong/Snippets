@@ -8,7 +8,6 @@ include(cmake/tools.cmake)
 include(cmake/CPM.cmake)
 
 CPMAddPackage("gh:doctest/doctest@2.4.11")
-CPMAddPackage("gh:TheLartians/Format.cmake@1.8.1")
 
 include(${doctest_SOURCE_DIR}/scripts/cmake/doctest.cmake)
 
