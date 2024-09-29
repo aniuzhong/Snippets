@@ -11,6 +11,12 @@ CPMAddPackage("gh:doctest/doctest@2.4.11")
 
 include(${doctest_SOURCE_DIR}/scripts/cmake/doctest.cmake)
 
+#[[ Packages managed by vcpkg
+
+    In .vscode/settings.json, add
+        "CMAKE_TOOLCHAIN_FILE": "path/to/vcpkg/scripts/buildsystems/vcpkg.cmake"
+#]]
+
 add_executable(counters counters.cpp)
 set_target_properties(counters PROPERTIES CXX_STANDARD 20)
 
