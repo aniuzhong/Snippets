@@ -15,7 +15,13 @@ include(${doctest_SOURCE_DIR}/scripts/cmake/doctest.cmake)
 
     In .vscode/settings.json, add
         "CMAKE_TOOLCHAIN_FILE": "path/to/vcpkg/scripts/buildsystems/vcpkg.cmake"
+
+    ffmpeg: FFMPEG_FOUND
+            FFMPEG_INCLUDE_DIRS
+            FFMPEG_LIBRARY_DIRS
+            FFMPEG_LIBRARIES
 #]]
+find_package(FFMPEG)
 
 add_executable(counters counters.cpp)
 set_target_properties(counters PROPERTIES CXX_STANDARD 20)
@@ -36,3 +42,7 @@ endif()
 
 add_executable(atomic_shared_ptr atomic_shared_ptr.cpp)
 set_target_properties(atomic_shared_ptr PROPERTIES CXX_STANDARD 20)
+
+if (FFMPEG_FOUND)
+  add_subdirectory(ff)
+endif (FFMPEG_FOUND)
