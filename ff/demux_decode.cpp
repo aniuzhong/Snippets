@@ -310,7 +310,7 @@ int main (int argc, char **argv)
 
     if (video_stream) {
         printf("Play the output video file with the command:\n"
-               "ffplay -f rawvideo -pix_fmt %s -video_size %dx%d %s\n",
+               "ffplay -f rawvideo -pixel_format %s -video_size %dx%d %s\n",
                av_get_pix_fmt_name(pix_fmt), width, height,
                video_dst_filename);
     }
