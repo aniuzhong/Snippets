@@ -1,0 +1,18 @@
+{
+    "terminal.integrated.env.linux": {
+        "GTK_PATH": "" // https://github.com/ros2/ros2/issues/1406,
+    },
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "C_Cpp.clang_format_fallbackStyle": "",
+    // "clangd.path": "/usr/bin/clangd",
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.configureSettings": {
+        "CMAKE_TOOLCHAIN_FILE": "../../vcpkg/scripts/buildsystems/vcpkg.cmake",
+    },
+    "cmake.debugConfig": {
+        "args": [
+            "arg1",
+            "arg2",
+        ]
+    },
+}
