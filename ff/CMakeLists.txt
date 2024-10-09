@@ -1,5 +1,0 @@
-add_executable(demux_decode demux_decode.cpp)
-set_target_properties(demux_decode PROPERTIES CXX_STANDARD 20)
-target_include_directories(demux_decode PRIVATE ${FFMPEG_INCLUDE_DIRS})
-target_link_directories(demux_decode PRIVATE ${FFMPEG_LIBRARY_DIRS})
-target_link_libraries(demux_decode PRIVATE ${FFMPEG_LIBRARIES})

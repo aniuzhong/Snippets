@@ -42,7 +42,3 @@ endif()
 
 add_executable(atomic_shared_ptr atomic_shared_ptr.cpp)
 set_target_properties(atomic_shared_ptr PROPERTIES CXX_STANDARD 20)
-
-if (FFMPEG_FOUND)
-  add_subdirectory(ff)
-endif (FFMPEG_FOUND)
