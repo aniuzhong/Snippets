@@ -36,3 +36,15 @@ endif()
 
 add_executable(atomic_shared_ptr atomic_shared_ptr.cpp)
 set_target_properties(atomic_shared_ptr PROPERTIES CXX_STANDARD 20)
+
+add_executable(sdl2_drum sdl2_drum.cpp)
+set_target_properties(sdl2_drum PROPERTIES CXX_STANDARD 20)
+target_link_libraries(sdl2_drum 
+  PRIVATE
+  $<TARGET_NAME_IF_EXISTS:SDL2::SDL2main>
+  $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
+)
+target_link_libraries(sdl2_drum
+  PRIVATE
+  $<IF:$<TARGET_EXISTS:SDL2_mixer::SDL2_mixer>,SDL2_mixer::SDL2_mixer,SDL2_mixer::SDL2_mixer-static>
+)
