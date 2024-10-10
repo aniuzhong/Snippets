@@ -11,17 +11,11 @@ CPMAddPackage("gh:doctest/doctest@2.4.11")
 
 include(${doctest_SOURCE_DIR}/scripts/cmake/doctest.cmake)
 
-#[[ Packages managed by vcpkg
-
-    In .vscode/settings.json, add
-        "CMAKE_TOOLCHAIN_FILE": "path/to/vcpkg/scripts/buildsystems/vcpkg.cmake"
-
-    ffmpeg: FFMPEG_FOUND
-            FFMPEG_INCLUDE_DIRS
-            FFMPEG_LIBRARY_DIRS
-            FFMPEG_LIBRARIES
-#]]
-find_package(FFMPEG)
+# Packages managed by vcpkg
+#   In .vscode/settings.json, add "CMAKE_TOOLCHAIN_FILE": "path/to/vcpkg/scripts/buildsystems/vcpkg.cmake"
+find_package(FFMPEG REQUIRED)
+find_package(SDL2 CONFIG REQUIRED)
+find_package(SDL2_mixer CONFIG REQUIRED)
 
 add_executable(counters counters.cpp)
 set_target_properties(counters PROPERTIES CXX_STANDARD 20)
