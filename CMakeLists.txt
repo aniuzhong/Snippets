@@ -54,3 +54,18 @@ set_target_properties(ffmpeg_demux_decode PROPERTIES CXX_STANDARD 20)
 target_include_directories(ffmpeg_demux_decode PRIVATE ${FFMPEG_INCLUDE_DIRS})
 target_link_directories(ffmpeg_demux_decode PRIVATE ${FFMPEG_LIBRARY_DIRS})
 target_link_libraries(ffmpeg_demux_decode PRIVATE ${FFMPEG_LIBRARIES})
+
+add_executable(ffmpeg_sdl2_audio_player ffmpeg_sdl2_audio_player.cpp)
+set_target_properties(ffmpeg_sdl2_audio_player PROPERTIES CXX_STANDARD 20)
+target_include_directories(ffmpeg_sdl2_audio_player PRIVATE ${FFMPEG_INCLUDE_DIRS})
+target_link_directories(ffmpeg_sdl2_audio_player PRIVATE ${FFMPEG_LIBRARY_DIRS})
+target_link_libraries(ffmpeg_sdl2_audio_player PRIVATE ${FFMPEG_LIBRARIES})
+target_link_libraries(ffmpeg_sdl2_audio_player 
+  PRIVATE
+  $<TARGET_NAME_IF_EXISTS:SDL2::SDL2main>
+  $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
+)
+target_link_libraries(ffmpeg_sdl2_audio_player
+  PRIVATE
+  $<IF:$<TARGET_EXISTS:SDL2_mixer::SDL2_mixer>,SDL2_mixer::SDL2_mixer,SDL2_mixer::SDL2_mixer-static>
+)
