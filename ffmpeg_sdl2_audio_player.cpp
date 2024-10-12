@@ -1,5 +1,6 @@
 // References
 // [1] https://git.ffmpeg.org/gitweb/ffmpeg.git/blob/HEAD:/doc/examples/demux_decode.c
+// [2] https://www.mail-archive.com/ffmpeg-user@ffmpeg.org/msg30274.html
 
 #include <atomic>
 #include <chrono>
@@ -23,6 +24,28 @@ extern "C" {
 #include <SDL_audio.h>
 #include <SDL_types.h>
 }
+
+#ifdef av_err2str
+#undef av_err2str
+#include <string>
+av_always_inline std::string av_err2string(int errnum)
+{
+    char str[AV_ERROR_MAX_STRING_SIZE];
+    return av_make_error_string(str, AV_ERROR_MAX_STRING_SIZE, errnum);
+}
+#define av_err2str(err) av_err2string(err).c_str()
+#endif // av_err2str
+
+#ifdef av_ts2timestr
+#undef av_ts2timestr
+#include <string>
+av_always_inline std::string av_ts2timestring(int64_t ts, const AVRational *tb)
+{
+    char str[AV_ERROR_MAX_STRING_SIZE];
+    return av_ts_make_time_string2(str, ts, *tb);
+}
+#define av_ts2timestr(ts, tb) av_ts2timestring(ts, tb).c_str()
+#endif // av_ts2timestr
 
 class Processor {
     const char*           src_filename_      = nullptr;
